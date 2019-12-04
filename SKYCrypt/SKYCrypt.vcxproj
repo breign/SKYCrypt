@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0DEAEC4B-03C8-4B0A-9F35-10F83EFDEF66}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SKYCrypt</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>E:\openssl\lib;E:\curl-curl-7_60_0\build\Win32\VC11\LIB Release - LIB OpenSSL;$(LibraryPath)</LibraryPath>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>E:\openssl\lib;E:\curl-curl-7_60_0\build\Win32\VC11\LIB Release - LIB OpenSSL;$(LibraryPath)</LibraryPath>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;DEBUG;_WINDOWS;_USRDLL;SKYCRYPT_EXPORTS;_CRT_SECURE_NO_WARNINGS;USE_SSLEAY;USE_OPENSSL;CURL_STATICLIB</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\openssl\include;E:\curl-curl-7_60_0\include\curl;C:\Users\Benjo\air 16.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <CallingConvention />
+      <MinimalRebuild>false</MinimalRebuild>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Benjo\air 16.0\lib\win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FlashRuntimeExtensions.lib;kernel32.lib;Gdi32.lib;user32.lib;shell32.lib;uuid.lib;ole32.lib;advapi32.lib;ws2_32.lib;crypt32.lib;libcrypto.lib;libssl.lib;libcurl.lib</AdditionalDependencies>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo building ANE...
+cd "C:\Users\Benjo\AFB_4.5.1\SKYCryptANE\bin" 
+copy /y "C:\Users\Benjo\Documents\Visual Studio 2012\Projects\SKYCrypt\Release\SKYCrypt.dll" SKYCrypt.dll
+"C:\Users\Benjo\Air 16.0\bin\adt.bat"  -package -target ane SKYCrypt.ane extension.xml -swc SKYCryptANE.swc -platform Windows-x86 library.swf SKYCrypt.dll &amp; copy /y "C:\Users\Benjo\AFB_4.5.1\SKYCryptANE\bin\SKYCrypt.ane" "C:\Users\Benjo\AFB_4.5.1\eBlagajnaPOS\extensions\SKYCrypt.ane"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Building Debug ANE for AS</Message>
+    </PostBuildEvent>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SKYCRYPT_EXPORTS;_CRT_SECURE_NO_WARNINGS;USE_SSLEAY;USE_OPENSSL;CURL_STATICLIB</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\openssl\include;E:\curl-curl-7_60_0\include\curl;C:\Users\Benjo\air 16.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <CallingConvention />
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <CompileAs>Default</CompileAs>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <EnablePREfast>false</EnablePREfast>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Users\Benjo\air 16.0\lib\win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FlashRuntimeExtensions.lib;user32.lib;advapi32.lib;ws2_32.lib;crypt32.lib;libcrypto.lib;libssl.lib;libcurl.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <AdditionalOptions> /LTCG %(AdditionalOptions)</AdditionalOptions>
+      <EnableUAC>false</EnableUAC>
+      <PreventDllBinding>false</PreventDllBinding>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <TurnOffAssemblyGeneration>true</TurnOffAssemblyGeneration>
+      <LinkErrorReporting>NoErrorReport</LinkErrorReporting>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ShowProgress>LinkVerboseLib</ShowProgress>
+    </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>echo building ANE...
+cd "C:\Users\Benjo\AFB_4.5.1\SKYCryptANE\bin" 
+copy /y "C:\Users\Benjo\Documents\Visual Studio 2012\Projects\SKYCrypt\Release\SKYCrypt.dll" SKYCrypt.dll
+"C:\Users\Benjo\Air 16.0\bin\adt.bat"  -package -target ane SKYCrypt.ane extension.xml -swc SKYCryptANE.swc -platform Windows-x86 library.swf SKYCrypt.dll &amp; copy /y "C:\Users\Benjo\AFB_4.5.1\SKYCryptANE\bin\SKYCrypt.ane" "C:\Users\Benjo\AFB_4.5.1\eBlagajnaPOS\extensions\SKYCrypt.ane"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Building ANE for AS</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Message>update version</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Air 16.0\include\FlashRuntimeExtensions.h" />
+    <ClInclude Include="HexUtils.h" />
+    <ClInclude Include="openssl.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SKY2FURS.h" />
+    <ClInclude Include="StrUtils.h" />
+    <ClInclude Include="WinApi.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllMain.cpp" />
+    <ClCompile Include="HexUtils.cpp" />
+    <ClCompile Include="openssl.cpp" />
+    <ClCompile Include="SKY2FURS.cpp" />
+    <ClCompile Include="StrUtils.cpp" />
+    <ClCompile Include="WinApi.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SKYCrypt.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
